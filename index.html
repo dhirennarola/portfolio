@@ -8,6 +8,8 @@
         content="Dhiren Narola — Senior Odoo/ERP Developer & Technical Lead. 4+ years of enterprise ERP solutions, custom module development, and third-party integrations.">
     <meta name="keywords"
         content="Odoo Developer, ERP Consultant, Freelance Odoo Developer, Python Developer, Odoo Customization, ERP Implementation">
+    <meta name="author" content="Dhiren Narola">
+    <meta name="theme-color" content="#0a0f1a">
     <title>Dhiren Narola — Senior Odoo/ERP Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -288,6 +290,7 @@
             letter-spacing: -0.04em;
             line-height: 1.1;
             margin-bottom: 0.6rem;
+            word-break: break-word;
         }
 
         .hero-role {
@@ -403,11 +406,13 @@
             transform-origin: left center;
         }
 
-        .about-photo:hover {
+        .about-photo:hover,
+        .about-photo:focus-visible {
             border-color: var(--accent);
             transform: scale(1.08);
             box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4);
             z-index: 10;
+            outline: none;
         }
 
         .about-photo.enlarged {
@@ -493,7 +498,7 @@
         /* ===== SERVICES ===== */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.25rem;
         }
 
@@ -630,6 +635,19 @@
             background: var(--accent-dim);
             border-radius: 20px;
             margin-bottom: 0.6rem;
+            display: inline-block;
+        }
+
+        .project-version {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #a78bfa;
+            padding: 0.3rem 0.75rem;
+            background: rgba(167, 139, 250, 0.1);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            border-radius: 20px;
+            margin-left: 0.5rem;
             display: inline-block;
         }
 
@@ -1085,7 +1103,151 @@
             transform: translateY(0);
         }
 
+        /* ===== ACCESSIBILITY / WCAG ===== */
+        /* Skip to content link */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-radius: 0 0 8px 8px;
+            z-index: 200;
+            text-decoration: none;
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Focus indicators for keyboard navigation */
+        *:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .nav-links a:focus-visible {
+            outline-offset: 6px;
+        }
+
+        .btn-primary:focus-visible {
+            box-shadow: 0 0 0 3px var(--accent-glow);
+            outline: none;
+        }
+
+        .btn-secondary:focus-visible {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+            outline: none;
+        }
+
+        .project-card:focus-visible {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+            outline: none;
+        }
+
+        .contact-item:focus-visible {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        .contact-form input:focus-visible,
+        .contact-form textarea:focus-visible {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-dim);
+            outline: none;
+        }
+
+        /* Resume download button */
+        .btn-resume {
+            padding: 0.8rem 1.8rem;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            border-radius: 8px;
+            font-family: var(--font);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-resume:hover,
+        .btn-resume:focus-visible {
+            border-color: #a78bfa;
+            color: #a78bfa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(167, 139, 250, 0.15);
+        }
+
+        /* Screen reader only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
         /* ===== RESPONSIVE ===== */
+
+        /* Tablet landscape & small desktop */
+        @media (max-width: 1024px) {
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-highlights {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Tablet portrait */
         @media (max-width: 768px) {
             nav {
                 padding: 0.8rem 1.2rem;
@@ -1102,6 +1264,8 @@
                 padding: 1.5rem 2rem;
                 gap: 1.2rem;
                 border-bottom: 1px solid var(--border);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
             }
 
             .nav-links.open {
@@ -1116,54 +1280,319 @@
                 padding: 4rem 1.2rem;
             }
 
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 2rem;
+            }
+
+            /* Hero */
+            #home {
+                padding: 6rem 1.2rem 3rem;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-name {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+
+            .hero-role {
+                font-size: 1rem;
+            }
+
+            .hero-desc {
+                font-size: 0.9rem;
+            }
+
             .hero-stats {
-                gap: 2rem;
+                gap: 1.5rem;
                 flex-wrap: wrap;
             }
 
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            /* About */
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                text-align: center;
             }
 
             .about-photo {
-                width: 160px;
-                height: 190px;
+                width: 180px;
+                height: 210px;
+                margin: 0 auto;
+                transform-origin: center center;
+            }
+
+            .about-photo.enlarged {
+                transform: scale(1.8);
+            }
+
+            .about-text {
+                text-align: left;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.6rem;
             }
 
             .cert-banner {
                 flex-direction: column;
                 text-align: center;
+                gap: 1.5rem;
             }
 
             .cert-image-wrap {
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
             }
 
-            .about-highlights {
-                grid-template-columns: 1fr;
-            }
-
+            /* Services */
             .services-grid {
                 grid-template-columns: 1fr;
             }
 
+            .service-card:hover {
+                transform: none;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            }
+
+            .service-card::before {
+                opacity: 0.5 !important;
+            }
+
+            .service-card {
+                border-color: var(--border-accent);
+            }
+
+            /* Projects */
+            .project-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .project-header h3 {
+                font-size: 1rem;
+            }
+
+            .project-version {
+                margin-left: 0;
+                margin-top: 0.3rem;
+            }
+
+            .project-tags {
+                gap: 0.4rem;
+            }
+
+            .project-tag {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.6rem;
+            }
+
+            /* Contact */
             .contact-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .form-row {
                 grid-template-columns: 1fr;
             }
 
+            /* Why Me */
             .why-grid {
                 grid-template-columns: 1fr;
             }
 
-            .project-header {
-                flex-direction: column;
+            /* Skills */
+            .skill-tags {
                 gap: 0.5rem;
+            }
+
+            .skill-tag {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        /* Mobile phones */
+        @media (max-width: 480px) {
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.85rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Hero */
+            #home {
+                padding: 5.5rem 1rem 2.5rem;
+            }
+
+            .hero-greeting {
+                font-size: 0.75rem;
+            }
+
+            .hero-name {
+                font-size: clamp(1.8rem, 10vw, 2.5rem);
+            }
+
+            .hero-role {
+                font-size: 0.9rem;
+            }
+
+            .hero-desc {
+                font-size: 0.85rem;
+                line-height: 1.6;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .hero-ctas .btn-primary,
+            .hero-ctas .btn-secondary,
+            .hero-ctas .btn-resume {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-stats {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.2rem;
+                text-align: center;
+            }
+
+            .stat-number {
+                font-size: 1.3rem;
+            }
+
+            .stat-label {
+                font-size: 0.65rem;
+            }
+
+            /* About */
+            .about-photo {
+                width: 160px;
+                height: 190px;
+                margin: 0 auto;
+            }
+
+            .about-title {
+                font-size: 1.3rem;
+            }
+
+            .about-text {
+                font-size: 0.85rem;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .highlight-card {
+                padding: 0.8rem 1rem;
+            }
+
+            .highlight-card span {
+                font-size: 0.78rem;
+            }
+
+            .cert-banner {
+                padding: 1.5rem;
+                gap: 1rem;
+            }
+
+            .cert-text h3 {
+                font-size: 1.1rem;
+            }
+
+            .cert-text p {
+                font-size: 0.85rem;
+            }
+
+            .cert-badge {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+            }
+
+            /* Services */
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-card h3 {
+                font-size: 1rem;
+            }
+
+            .service-card p {
+                font-size: 0.85rem;
+            }
+
+            /* Projects */
+            .project-card {
+                padding: 1.2rem;
+            }
+
+            .project-summary {
+                font-size: 0.85rem;
+            }
+
+            .project-detail-list li {
+                font-size: 0.82rem;
+            }
+
+            /* Contact */
+            .contact-item {
+                padding: 1rem;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 0.9rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .contact-form label {
+                font-size: 0.75rem;
+            }
+
+            /* Why Me */
+            .why-card {
+                padding: 1.5rem;
+            }
+
+            .why-card h3 {
+                font-size: 1rem;
+            }
+
+            .why-card p {
+                font-size: 0.85rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 1.5rem 1rem;
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -1171,30 +1600,34 @@
 
 <body>
 
+    <!-- SKIP TO CONTENT (WCAG 2.4.1) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- NAVIGATION -->
-    <nav id="navbar">
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
-            <a href="#home" class="nav-logo">Dhiren<span>.</span></a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#whyme">Why Me</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <a href="#home" class="nav-logo" aria-label="Dhiren Narola - Home">Dhiren<span>.</span></a>
+            <ul class="nav-links" id="navLinks" role="menubar">
+                <li role="none"><a href="#about" role="menuitem">About</a></li>
+                <li role="none"><a href="#services" role="menuitem">Services</a></li>
+                <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
+                <li role="none"><a href="#skills" role="menuitem">Skills</a></li>
+                <li role="none"><a href="#whyme" role="menuitem">Why Me</a></li>
+                <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span><span></span><span></span>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
             </button>
         </div>
     </nav>
 
     <!-- HERO -->
-    <section id="home">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <div class="hero-greeting">
-                <span class="dot"></span>
+    <section id="home" aria-label="Introduction">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-content" id="main-content">
+            <div class="hero-greeting" role="status">
+                <span class="dot" aria-hidden="true"></span>
                 Available for remote work & freelance projects
             </div>
             <h1 class="hero-name">Dhiren Narola</h1>
@@ -1205,19 +1638,31 @@
                 work smarter with Odoo.
             </p>
             <div class="hero-ctas">
-                <a href="#projects" class="btn-primary">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a href="#projects" class="btn-primary" aria-label="View my project portfolio">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                         <circle cx="12" cy="12" r="3" />
                     </svg>
                     View My Work
                 </a>
-                <a href="#contact" class="btn-secondary">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a href="#contact" class="btn-secondary" aria-label="Navigate to contact form">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                         <polyline points="22,6 12,13 2,6" />
                     </svg>
                     Get In Touch
+                </a>
+                <a href="assets/Dhiren-Resume.pdf" class="btn-resume" download
+                    aria-label="Download Dhiren Narola's resume as PDF">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Download Resume
                 </a>
             </div>
             <div class="hero-stats">
@@ -1242,12 +1687,22 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about">
+    <section id="about" aria-label="About Dhiren Narola">
         <div class="reveal">
             <div class="section-label">About Me</div>
             <div class="about-grid">
-                <div class="about-photo" onclick="this.classList.toggle('enlarged')">
-                    <img src="assets/profile.png" alt="Dhiren Narola - Senior Odoo Developer">
+                <div class="about-photo" onclick="this.classList.toggle('enlarged')" tabindex="0" role="button"
+                    aria-label="Click to enlarge profile photo"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('enlarged')}">
+                    <picture>
+                        <source type="image/webp" srcset="assets/profile-240w.webp 240w, assets/profile-480w.webp 480w"
+                            sizes="(max-width: 768px) 180px, 240px">
+                        <source type="image/jpeg" srcset="assets/profile-240w.jpg 240w, assets/profile-480w.jpg 480w"
+                            sizes="(max-width: 768px) 180px, 240px">
+                        <img src="assets/profile-480w.jpg"
+                            alt="Professional headshot of Dhiren Narola, Senior Odoo/ERP Developer wearing a blazer"
+                            loading="lazy" width="240" height="280">
+                    </picture>
                 </div>
                 <div class="about-text">
                     <h2 class="section-title">Building enterprise solutions that matter.</h2>
@@ -1297,7 +1752,7 @@
     </section>
 
     <!-- SERVICES -->
-    <section id="services">
+    <section id="services" aria-label="Services offered by Dhiren Narola">
         <div class="reveal">
             <div class="section-label">What I Do</div>
             <h2 class="section-title">Services</h2>
@@ -1352,11 +1807,12 @@
             <p class="section-subtitle">Due to NDAs, client names are confidential. Here's the scope and impact of what
                 I've built — click to see details.</p>
 
-            <!-- Project 1 -->
+            <!-- Project 1: Car Servicing -->
             <div class="project-card" onclick="toggleProject(this)">
                 <div class="project-header">
                     <div>
                         <span class="project-industry">Automotive & Retail</span>
+                        <span class="project-version">v15 & v18</span>
                         <h3>Premium Car Servicing & Spare Parts ERP</h3>
                     </div>
                     <div class="project-toggle">
@@ -1410,12 +1866,13 @@
                 </div>
             </div>
 
-            <!-- Project 2 -->
+            <!-- Project 2: Medical Equipment Manufacturing -->
             <div class="project-card" onclick="toggleProject(this)">
                 <div class="project-header">
                     <div>
-                        <span class="project-industry">Facilities Management</span>
-                        <h3>Elevator Maintenance & Service Management ERP</h3>
+                        <span class="project-industry">Healthcare & Manufacturing</span>
+                        <span class="project-version">v11 & v18</span>
+                        <h3>Medical Equipment Manufacturing ERP</h3>
                     </div>
                     <div class="project-toggle">
                         <span>Details</span>
@@ -1423,32 +1880,106 @@
                     </div>
                 </div>
                 <p class="project-summary">
-                    Led the development of CRM, Subscription, and Maintenance modules for an elevator
-                    maintenance company — automating scheduling, customer communication, and workforce tracking.
+                    As lead developer, spearheaded the implementation, planning, and development of critical
+                    functionalities during migration from Odoo v11 to v18 — redesigning manufacturing workflows
+                    for a medical device equipment company.
                 </p>
                 <div class="project-tags">
-                    <span class="project-tag">CRM</span>
-                    <span class="project-tag">Subscription</span>
-                    <span class="project-tag">Maintenance</span>
+                    <span class="project-tag">Sales</span>
+                    <span class="project-tag">Purchase</span>
+                    <span class="project-tag">Accounting</span>
+                    <span class="project-tag">Employees</span>
+                    <span class="project-tag">Appraisals</span>
+                    <span class="project-tag">Time Off</span>
+                    <span class="project-tag">Manufacturing</span>
+                    <span class="project-tag">Inventory</span>
+                    <span class="project-tag">Payroll</span>
+                    <span class="project-tag">Fleet</span>
+                    <span class="project-tag">Project</span>
+                    <span class="project-tag">Recruitment</span>
                     <span class="project-tag">Attendance</span>
-                    <span class="project-tag">Contacts</span>
+                    <span class="project-tag">Expense</span>
+                    <span class="project-tag">Shopfloor</span>
+                    <span class="project-tag">Quality</span>
+                    <span class="project-tag">PLM</span>
+                    <span class="project-tag">Sign</span>
                 </div>
                 <div class="project-details">
                     <div class="project-details-inner">
                         <ul class="project-detail-list">
-                            <li>Created an automated maintenance scheduling system for elevator subscriptions, ensuring
-                                timely service and minimizing downtime.</li>
-                            <li>Customized CRM to integrate repair and installation tasks, improving workflow efficiency
-                                and customer service management.</li>
-                            <li>Implemented real-time attendance synchronization with LanaTime devices for accurate
-                                workforce tracking.</li>
-                            <li>Integrated contact synchronization with Messagebird for improved communication
-                                management.</li>
-                            <li>Developed a custom <strong>WhatsApp flow</strong> for customers — enabling them to view
-                                active subscriptions, completed visits, visit reports, create
-                                CRM/installation/maintenance requests, and confirm payments by sending receipts.</li>
-                            <li>Built SMS fallback notification system for updates on subscription plans, elevator
-                                status, and maintenance request status when WhatsApp fails or isn't available.</li>
+                            <li>Customized <strong>Raw Products Manufacturing</strong> and <strong>Finished Goods
+                                    Manufacturing</strong> workflows tailored to medical device production standards.
+                            </li>
+                            <li>Designed and implemented <strong>BMR (Batch Manufacturing Records)</strong> and sample
+                                workflow aligned with industry standards for medical device equipment manufacturing.
+                            </li>
+                            <li>Implemented all manufacturing processes within Odoo's default Manufacturing app with
+                                extensively customized workflows — from sample manufacturing and preservation to
+                                batch generation.</li>
+                            <li>Customized <strong>Expiration Management</strong> and removal strategy for all
+                                medical equipment and consumables.</li>
+                            <li>Customized <strong>Shopfloor</strong> to include all steps of the product lifecycle
+                                — ensuring complete traceability at every stage.</li>
+                            <li>Implemented strict <strong>Quality Checks and Quality Points</strong> at all
+                                manufacturing steps as per government regulations and compliance requirements.</li>
+                            <li>Automated generation of multiple <strong>pharma industry-specific reports</strong>
+                                conforming to industrial norms and regulatory standards.</li>
+                            <li>Built <strong>auto-generated warning alert notifications</strong> for the management
+                                team when process time remains constant (does not reduce) for 3 months for the same
+                                process on a particular product.</li>
+                            <li>Developed auto-generated <strong>work efficiency and employee efficiency
+                                    reports</strong>,
+                                linked with accounting for profitability analysis.</li>
+                            <li>Customized <strong>HR, Payroll, and Attendance</strong> system (integrated with ZKTeco
+                                machines) with auto-calculation of overtime, pay, and incentives based on employee
+                                inputs from the manufacturing module workflow.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Solar Manufacturing -->
+            <div class="project-card" onclick="toggleProject(this)">
+                <div class="project-header">
+                    <div>
+                        <span class="project-industry">Energy & Manufacturing</span>
+                        <span class="project-version">v18 & v19</span>
+                        <h3>Solar Panel Manufacturing & Sales ERP</h3>
+                    </div>
+                    <div class="project-toggle">
+                        <span>Details</span>
+                        <span class="project-toggle-icon">▾</span>
+                    </div>
+                </div>
+                <p class="project-summary">
+                    Led manufacturing development and implementation for a solar panel manufacturing and sales
+                    company — customizing production workflows, quality grading, and inventory management.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Manufacturing</span>
+                    <span class="project-tag">Quality</span>
+                    <span class="project-tag">Inventory</span>
+                    <span class="project-tag">Sales</span>
+                    <span class="project-tag">Purchase</span>
+                </div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <ul class="project-detail-list">
+                            <li>Customized generation of <strong>Lot/Serial Numbers</strong> before the Manufacturing
+                                Order is finalized — ensuring traceability from production start.</li>
+                            <li>Developed a custom <strong>Byproducts workflow</strong> for panels with lower capacity
+                                derived from higher capacity production, with inline material usage tracking
+                                for each variant.</li>
+                            <li>Created <strong>automated alerts</strong> for higher-than-expected material usage —
+                                triggering notifications when consumption exceeds predefined limits.</li>
+                            <li>Built a custom <strong>QC (Quality Control) module</strong> with all necessary
+                                information relevant to solar panel inspection, automatically grading panels
+                                (A, B, C grades) as per industry norms.</li>
+                            <li>Implemented separate handling of <strong>B and C grade products</strong> — managing
+                                stock independently with brand names carried forward until goods are fully utilized.
+                            </li>
+                            <li>Developed a complete <strong>sample generation flow</strong> with separate QC reports
+                                for sample products, ensuring quality validation before full-batch production.</li>
                         </ul>
                     </div>
                 </div>
@@ -1468,7 +1999,6 @@
             </div>
         </div>
     </section>
-
     <!-- SKILLS -->
     <section id="skills">
         <div class="reveal">
@@ -1550,8 +2080,20 @@
             <h2 class="section-title">Officially Certified</h2>
             <p class="section-subtitle">Validated expertise from Odoo S.A. — the creators of Odoo.</p>
             <div class="cert-banner">
-                <div class="cert-image-wrap" onclick="openLightbox('assets/certificate.jpg')">
-                    <img src="assets/certificate.jpg" alt="Odoo Functional Consultant Certificate - Dhiren Narola">
+                <div class="cert-image-wrap" onclick="openLightbox('assets/certificate.jpg')" tabindex="0" role="button"
+                    aria-label="View Odoo certification in full size"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('assets/certificate.jpg')}">
+                    <picture>
+                        <source type="image/webp"
+                            srcset="assets/certificate-400w.webp 400w, assets/certificate-800w.webp 800w"
+                            sizes="(max-width: 768px) 280px, 400px">
+                        <source type="image/jpeg"
+                            srcset="assets/certificate-400w.jpg 400w, assets/certificate-800w.jpg 800w"
+                            sizes="(max-width: 768px) 280px, 400px">
+                        <img src="assets/certificate-800w.jpg"
+                            alt="Odoo 18 Certified Functional Consultant certificate awarded to Dhiren Narola by Odoo S.A."
+                            loading="lazy" width="800" height="600">
+                    </picture>
                 </div>
                 <div class="cert-text">
                     <h3>Odoo 18 Certified Functional Consultant</h3>
@@ -1575,7 +2117,7 @@
     </section>
 
     <!-- WHY ME -->
-    <section id="whyme">
+    <section id="whyme" aria-label="Reasons to work with Dhiren Narola">
         <div class="reveal">
             <div class="section-label">Why Work With Me</div>
             <h2 class="section-title">What sets me apart</h2>
@@ -1622,7 +2164,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact">
+    <section id="contact" aria-label="Contact Dhiren Narola">
         <div class="reveal">
             <div class="section-label">Get In Touch</div>
             <h2 class="section-title">Let's discuss your next project</h2>
@@ -1669,35 +2211,39 @@
                         </div>
                     </a>
                 </div>
-                <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+                <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)" aria-label="Contact form">
                     <input type="hidden" name="access_key" value="e8af80a6-d611-43a5-b1d5-ca150115ffa6">
                     <input type="hidden" name="subject" id="hiddenSubject" value="Portfolio Inquiry">
                     <input type="hidden" name="from_name" value="Portfolio Contact Form">
                     <!-- Honeypot spam trap -->
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1"
+                        aria-hidden="true">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                            <label for="name">Name <span class="sr-only">(required)</span></label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required
+                                aria-required="true" autocomplete="name">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            <label for="email">Email <span class="sr-only">(required)</span></label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required
+                                aria-required="true" autocomplete="email">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="subject">Subject</label>
                         <input type="text" id="subject" name="form_subject"
-                            placeholder="Project discussion, consultation...">
+                            placeholder="Project discussion, consultation..." autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Tell me about your project..."
-                            required></textarea>
+                        <label for="message">Message <span class="sr-only">(required)</span></label>
+                        <textarea id="message" name="message" placeholder="Tell me about your project..." required
+                            aria-required="true"></textarea>
                     </div>
-                    <button type="submit" class="btn-primary" id="submitBtn" style="width: fit-content;">
+                    <button type="submit" class="btn-primary" id="submitBtn" style="width: fit-content;"
+                        aria-label="Send message">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                            stroke-width="2" aria-hidden="true">
                             <line x1="22" y1="2" x2="11" y2="13" />
                             <polygon points="22 2 15 22 11 13 2 9 22 2" />
                         </svg>
@@ -1709,13 +2255,14 @@
     </section>
 
     <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-        <img id="lightboxImg" src="" alt="Certificate">
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true"
+        aria-label="Image lightbox viewer" tabindex="-1">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">✕</button>
+        <img id="lightboxImg" src="" alt="Odoo 18 Certified Functional Consultant certificate - enlarged view">
     </div>
 
     <!-- FOOTER -->
-    <footer>
+    <footer role="contentinfo">
         <p>© 2026 Dhiren Narola. Built with precision, like my ERP solutions.</p>
     </footer>
 
@@ -1730,12 +2277,16 @@
         const navToggle = document.getElementById('navToggle');
         const navLinks = document.getElementById('navLinks');
         navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
+            const isOpen = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
         });
 
         // Close mobile nav on link click
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('open'));
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
         });
 
         // ===== ACTIVE NAV LINK =====
@@ -1774,10 +2325,27 @@
         function toggleProject(card) {
             // Close others
             document.querySelectorAll('.project-card.expanded').forEach(c => {
-                if (c !== card) c.classList.remove('expanded');
+                if (c !== card) {
+                    c.classList.remove('expanded');
+                    c.setAttribute('aria-expanded', 'false');
+                }
             });
-            card.classList.toggle('expanded');
+            const isExpanded = card.classList.toggle('expanded');
+            card.setAttribute('aria-expanded', isExpanded);
         }
+
+        // Keyboard support for project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-expanded', 'false');
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleProject(card);
+                }
+            });
+        });
 
         // ===== CONTACT FORM (Web3Forms) =====
         async function handleSubmit(event) {
@@ -1901,18 +2469,25 @@
         heroObserver.observe(document.querySelector('.hero-stats'));
 
         // ===== LIGHTBOX =====
+        let lastFocusedElement = null;
+
         function openLightbox(src) {
+            lastFocusedElement = document.activeElement;
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightboxImg');
             img.src = src;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
+            // Trap focus inside lightbox
+            lightbox.focus();
         }
 
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
+            // Restore focus to trigger element
+            if (lastFocusedElement) lastFocusedElement.focus();
         }
 
         document.addEventListener('keydown', (e) => {
