@@ -1,0 +1,33 @@
+{
+    "name": "Dhiren Narola - Senior Odoo/ERP Developer",
+    "short_name": "Dhiren Narola",
+    "description": "Senior Odoo/ERP Developer with 4+ years of experience in enterprise solutions",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#0a0f1a",
+    "theme_color": "#0a0f1a",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "assets/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "business",
+        "productivity",
+        "professional"
+    ],
+    "lang": "en-US"
+}
