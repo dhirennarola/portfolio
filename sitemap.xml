@@ -4,7 +4,7 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://narola-dhiren.github.io/portfolio/</loc>
+    <loc>https://dhirennarola.github.io/portfolio/</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -12,7 +12,7 @@
   
   <!-- Projects Page -->
   <url>
-    <loc>https://narola-dhiren.github.io/portfolio/projects.html</loc>
+    <loc>https://dhirennarola.github.io/portfolio/projects.html</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -20,35 +20,35 @@
   
   <!-- Index with Sections -->
   <url>
-    <loc>https://narola-dhiren.github.io/portfolio/#about</loc>
+    <loc>https://dhirennarola.github.io/portfolio/#about</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://narola-dhiren.github.io/portfolio/#services</loc>
+    <loc>https://dhirennarola.github.io/portfolio/#services</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://narola-dhiren.github.io/portfolio/#skills</loc>
+    <loc>https://dhirennarola.github.io/portfolio/#skills</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://narola-dhiren.github.io/portfolio/#whyme</loc>
+    <loc>https://dhirennarola.github.io/portfolio/#whyme</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://narola-dhiren.github.io/portfolio/#contact</loc>
+    <loc>https://dhirennarola.github.io/portfolio/#contact</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
