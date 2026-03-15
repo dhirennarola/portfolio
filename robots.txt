@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://narola-dhiren.github.io/portfolio/sitemap.xml
+Sitemap: https://dhirennarola.github.io/portfolio/sitemap.xml
 
 # Crawl Delay
 Crawl-delay: 1
