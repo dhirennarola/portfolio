@@ -1,5 +1,6 @@
 ---
 title: 'Three Systems into One: Manufacturing ERP for a 225-Employee Pharma Producer'
+metaTitle: 'Pharma Manufacturing ERP on Odoo MRP — Case Study'
 clientLabel: 'Pharmaceutical & medical equipment manufacturer'
 industry: 'Manufacturing'
 country: 'India'
@@ -8,6 +9,7 @@ odooVersion: 'Odoo'
 role: 'Solution Architect & Implementation Lead'
 # TODO(Dhiren): confirm Odoo version + implementation year for this project
 status: 'Live in production'
+metaDescription: 'Odoo MRP for a pharma manufacturer: raw materials to finished goods with QC at every stage, 3 systems consolidated into 1 ERP.'
 summary: 'Full raw-material-to-finished-goods manufacturing workflow with stage-by-stage quality control for a regulated pharma producer — consolidating three separate systems into one ERP and cutting production tracking errors by 50%.'
 featured: true
 order: 2

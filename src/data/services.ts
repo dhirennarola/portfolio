@@ -106,7 +106,7 @@ export const services: Service[] = [
     pill: { label: 'Urgent work, handled calmly', kind: 'rescue' },
     headline: 'Your Odoo project went wrong. That’s recoverable — and you’re not alone.',
     lede: 'Roughly 40% of ERP projects underdeliver. I specialize in the ones that already have: stalled builds, broken go-lives, vanished partners. Rapid independent assessment, honest verdict, fixed-quote recovery.',
-    metaTitle: 'Odoo ERP Rescue & Recovery — Failed Implementation Help | Dhiren Narola',
+    metaTitle: 'Odoo ERP Rescue & Recovery | Dhiren Narola',
     metaDescription:
       'Failed or stalled Odoo implementation? Independent rescue assessment in days, not weeks — honest verdict on what’s salvageable and a fixed-quote recovery plan.',
     problems: [
@@ -185,7 +185,7 @@ export const services: Service[] = [
     pill: { label: 'Flagship offering', kind: 'accent' },
     headline: 'AI where it pays for itself — inside the system that runs your business.',
     lede: 'WhatsApp self-service that replaced half a call center. Billing that runs itself. Documents that become records without retyping. I build automation into Odoo where the ROI is measurable — and I’ll tell you where AI is just expensive.',
-    metaTitle: 'AI + Odoo — Intelligent ERP & Business Automation | Dhiren Narola',
+    metaTitle: 'AI + Odoo — Intelligent ERP Automation | Dhiren Narola',
     metaDescription:
       'AI-powered automation inside Odoo ERP: WhatsApp self-service flows, document intelligence & OCR, LLM integrations and workflow agents — built where ROI is measurable.',
     problems: [
@@ -259,7 +259,7 @@ export const services: Service[] = [
     name: 'Integrations & e-Invoicing',
     headline: 'Systems that talk to each other — and invoices regulators accept.',
     lede: 'ZATCA Phase 2 e-invoicing running at 1,500+ invoices a month. WooCommerce syncing 1,000+ orders a month. WhatsApp, payment gateways, attendance devices, legacy bridges — integrated with retry logic, not hope.',
-    metaTitle: 'Odoo Integrations & ZATCA e-Invoicing Compliance | Dhiren Narola',
+    metaTitle: 'Odoo Integrations & ZATCA e-Invoicing | Dhiren Narola',
     metaDescription:
       'Odoo integration specialist: ZATCA Phase 2 e-invoicing, WooCommerce, WhatsApp Business API, payment gateways, and legacy system bridges — production-hardened.',
     problems: [
@@ -325,7 +325,7 @@ export const services: Service[] = [
     pill: { label: 'For partners & agencies', kind: 'ok' },
     headline: 'Senior-led Odoo capacity for agencies, partners, and product companies.',
     lede: 'Overflow delivery, long-term development capacity, or a build team for your Odoo-based product — led by an architect who ran a 7-developer team at an Odoo Silver Partner and hired every one of them.',
-    metaTitle: 'Dedicated Odoo Development Team & Staff Augmentation | Dhiren Narola',
+    metaTitle: 'Dedicated Odoo Development Team | Dhiren Narola',
     metaDescription:
       'Dedicated Odoo development capacity led by an Odoo 18 certified architect — for agencies, Odoo partners, and companies needing senior-led offshore delivery.',
     problems: [

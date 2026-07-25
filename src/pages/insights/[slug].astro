@@ -41,7 +41,7 @@ const jsonLd = [
 ---
 
 <Base
-  title={`${d.title} | ${site.name}`}
+  title={d.metaTitle ?? `${d.title} | ${site.name}`}
   description={d.description}
   path={path}
   ogType="article"

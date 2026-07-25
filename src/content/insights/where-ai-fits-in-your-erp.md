@@ -1,6 +1,7 @@
 ---
 title: 'Where AI Actually Fits in Your ERP (and Where It’s Just Expensive)'
-description: 'Beyond the hype: the AI and automation patterns that pay for themselves inside an Odoo ERP — document processing, conversational service, workflow agents — and the ones that don’t.'
+metaTitle: "Where AI Actually Fits in Your ERP — and Where It Doesn't"
+description: 'Where AI pays for itself inside an ERP, where it is just expensive, and how to tell the difference before you spend the budget.'
 publishDate: 2026-06-10
 topic: 'AI & Automation'
 readingTime: '6 min'

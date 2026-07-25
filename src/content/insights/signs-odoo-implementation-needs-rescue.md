@@ -1,6 +1,7 @@
 ---
 title: '7 Signs Your Odoo Implementation Needs a Rescue (and What to Do Next)'
-description: 'Most ERP failures announce themselves months before go-live collapses. The warning signs I see across rescue projects — and the first three moves that stabilize a failing Odoo implementation.'
+metaTitle: "7 Signs Your Odoo Implementation Needs a Rescue"
+description: 'Most ERP failures announce themselves months before go-live collapses. The warning signs I see across rescue projects, and what to do about each.'
 publishDate: 2026-06-24
 topic: 'ERP Rescue'
 readingTime: '6 min'

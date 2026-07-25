@@ -48,7 +48,7 @@ Regenerate branded images (OG card, icons) after design changes: `npm run og`
 
 ## Pre-launch checklist
 - [ ] `facts.ts` → GA4 ID set
-- [ ] LinkedIn headline + experience updated to match site (20+, Synodica ended Jul 2026, independent 2026–)
+- [ ] LinkedIn headline + experience updated to match site (22 implementations / 13 countries, Synodica ended Jul 2026, independent 2026–)
 - [ ] Search `TODO(Dhiren)` across `src/` — resolve or accept each
 - [ ] Test contact form (submit → lands in inbox → /thanks page)
 - [ ] Test Calendly booking end-to-end

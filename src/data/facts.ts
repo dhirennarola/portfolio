@@ -171,6 +171,12 @@ export const odooStoreApps = [
  * LinkedIn recommendations — real, public, verbatim excerpts.
  * Full texts captured from linkedin.com/in/dhirennarola/details/recommendations/ on 2026-07-06.
  * Approved for publication (all four) on 2026-07-07.
+ *
+ * `verifiable: false` hides the "verify on LinkedIn" badge for that quote.
+ * Set it when the recommender's profile is deactivated — LinkedIn hides the
+ * recommendation along with the profile, so the badge would point at a page
+ * where a prospect cannot find it. The quote itself stays: it was genuinely
+ * given. Flip back to true when the profile returns.
  */
 export const recommendations = [
   {
@@ -204,6 +210,9 @@ export const recommendations = [
     role: 'Entrepreneur · AI Engineer · CTO',
     context: 'Worked on the same team',
     relation: 'worked with Dhiren',
+    // Profile temporarily deactivated (as of 2026-07-25) — LinkedIn hides the
+    // recommendation with it, so no verify badge until the profile is back.
+    verifiable: false,
   },
 ] as const;
 
@@ -226,3 +235,48 @@ export const countriesServed = [
   'Mexico',
   'Laos',
 ] as const;
+
+/**
+ * Continent per served country. The "N continents" claim is DERIVED from this
+ * map — never hardcode it. Add a country above and the count follows.
+ * (Egypt is counted as Africa, the conventional reading.)
+ */
+const countryContinent: Record<(typeof countriesServed)[number], string> = {
+  'United States': 'North America',
+  Mexico: 'North America',
+  'Saudi Arabia': 'Asia',
+  UAE: 'Asia',
+  Qatar: 'Asia',
+  India: 'Asia',
+  Laos: 'Asia',
+  Netherlands: 'Europe',
+  Germany: 'Europe',
+  Rwanda: 'Africa',
+  Egypt: 'Africa',
+  'New Zealand': 'Oceania',
+  Australia: 'Oceania',
+};
+
+/** ['North America', 'Asia', 'Europe', 'Africa', 'Oceania'] */
+export const continentsServed = [
+  ...new Set(Object.values(countryContinent)),
+] as readonly string[];
+
+const NUMBER_WORDS = [
+  'Zero',
+  'One',
+  'Two',
+  'Three',
+  'Four',
+  'Five',
+  'Six',
+  'Seven',
+  'Eight',
+  'Nine',
+] as const;
+
+/** '5' — for stats and inline copy. */
+export const continentCount = String(continentsServed.length);
+/** 'Five' — for headline copy. */
+export const continentWord =
+  NUMBER_WORDS[continentsServed.length] ?? continentCount;

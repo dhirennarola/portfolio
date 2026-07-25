@@ -17,12 +17,10 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes('/thanks') && !page.includes('/privacy'),
-      // Stamp entries with the build date so crawlers and SEO tools
-      // that expect <lastmod> see when the site last shipped.
-      serialize(item) {
-        item.lastmod = new Date().toISOString();
-        return item;
-      },
+      // No lastmod. It used to be stamped with the build time, which told
+      // crawlers all 24 pages changed on every deploy — even a CSS tweak.
+      // Google explicitly distrusts (and then ignores) lastmod that behaves
+      // that way, so an absent value is a stronger signal than a false one.
     }),
   ],
   // Old GitHub-Pages-era URLs → new structure (emitted as static redirect pages)

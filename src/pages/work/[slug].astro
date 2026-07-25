@@ -44,10 +44,11 @@ const jsonLd = [
 ---
 
 <Base
-  title={`${d.title} — Case Study | Dhiren Narola`}
-  description={d.summary}
+  title={d.metaTitle ?? `${d.title} — Case Study | Dhiren Narola`}
+  description={d.metaDescription ?? d.summary}
   path={path}
   ogType="article"
+  ogImage={`/og/work-${entry.id}.png`}
   jsonLd={jsonLd}
 >
   <header class="hero hero--sub on-dark cs-hero">
