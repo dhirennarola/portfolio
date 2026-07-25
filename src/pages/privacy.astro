@@ -15,27 +15,27 @@ import { contact } from '../data/facts';
       <h1>Privacy, briefly.</h1>
       <div class="prose">
         <p>This is a personal consulting website. Here's everything it does with data:</p>
-        <h3>Contact form</h3>
+        <h2>Contact form</h2>
         <p>
           When you submit the contact form, your details (name, email, company,
           and message) are delivered to my inbox via Web3Forms so I can respond
           to your inquiry. They're used for nothing else — no lists, no
           newsletters you didn't ask for, no sharing with third parties.
         </p>
-        <h3>Booking</h3>
+        <h2>Booking</h2>
         <p>
           Call scheduling is handled by Calendly, which processes the details
           you enter there under its own privacy policy.
         </p>
-        <h3>Analytics</h3>
+        <h2>Analytics</h2>
         <p>
           The site uses Google Analytics with IP anonymization to understand
           aggregate traffic (which pages are read, roughly from where). No
           personal profiles are built or sold.
         </p>
-        <h3>Questions or deletion requests</h3>
+        <h2>Questions or deletion requests</h2>
         <p>
-          Email <a href={`mailto:${contact.email}`}>{contact.email}</a> and I'll
+          Email <!--email_off--><a href={`mailto:${contact.email}`}>{contact.email}</a><!--/email_off--> and I'll
           handle it personally — the same way I answer everything else here.
         </p>
       </div>

@@ -1,35 +1,86 @@
-# TODO — everything left to go fully live
+# TODO
 
-All build/deploy problems are fixed; every remaining item is an account or DNS
-action only Dhiren can do. Detailed how-tos live in
-[docs/DEPLOY.md](docs/DEPLOY.md) and [docs/DOMAIN-SETUP.md](docs/DOMAIN-SETUP.md).
+Everything in the original list — repo rename, domain purchase, DNS, HTTPS,
+GA4 — is done. The site is live at https://dhirennarola.com, all 24 pages
+return 200, `robots.txt` allows every crawler, and the sitemap is complete.
 
-## 0 · Make the site render NOW (2 minutes — do this first)
-The deploy pipeline is green, but the site currently lands at
-`dhirennarola.github.io/portfolio` — and it's built to be served from a
-domain **root** (all links/assets start with `/`), so at that sub-path it
-shows unstyled HTML. Either of these fixes it instantly:
-- [ ] **Rename the repo to `dhirennarola.github.io`** (GitHub → Settings → General → Repository name). Site immediately works at `https://dhirennarola.github.io/`, and keeps working unchanged when the custom domain is added later. ← recommended
-- [ ] …or skip straight to step 1 (custom domain) — the domain also serves from the root.
+What remains is **discovery**: search engines cannot rank a site they have not
+indexed, and nothing in the codebase can force indexation. These are account
+actions only Dhiren can take.
 
-## 1 · Domain — dhirennarola.com (do first)
-- [ ] Buy `dhirennarola.com` at any registrar (~$10/yr).
-- [ ] Add DNS records (4 × A records + `www` CNAME) — table in docs/DOMAIN-SETUP.md §2.
-- [ ] GitHub repo → Settings → Pages → Custom domain → `dhirennarola.com` → wait for DNS check → tick **Enforce HTTPS**.
-- [ ] `public/CNAME` already contains the domain — nothing to change in the repo.
+## 1 · Google — Search Console (the blocker for Google results)
 
-## 2 · Email — hello@dhirennarola.com (URGENT after domain)
-The site now shows `hello@dhirennarola.com` everywhere (contact page, footer,
-mailto links). **Until forwarding exists, mail to that address bounces.**
-- [ ] Set up Cloudflare Email Routing (free) or registrar forwarding: `hello@dhirennarola.com` → your Gmail. (~10 min, receive-only.)
-- [ ] Later, optional: Google Workspace (~$6/mo) to also *send* from the address.
+Google does not participate in IndexNow, so the sitemap has to be submitted by
+hand once. Until this is done, Google has no reason to crawl the site.
 
-## 3 · Analytics & Search
-- [ ] Create GA4 property → paste Measurement ID into `src/data/facts.ts` → `site.gaMeasurementId` → push.
-- [ ] Google Search Console: add `dhirennarola.com` domain property (DNS verification) and submit `https://dhirennarola.com/sitemap-index.xml`.
+- [ ] Add `dhirennarola.com` as a **Domain property** at
+      https://search.google.com/search-console (DNS TXT verification — the
+      record goes at the registrar/Cloudflare, not in this repo).
+- [ ] Submit `https://dhirennarola.com/sitemap-index.xml` under **Sitemaps**.
+- [ ] Run **URL Inspection → Request indexing** on `/` first, then `/about`,
+      `/services`, `/work`. Do the rest as the first ones get picked up.
+- [ ] Check **Pages → Why pages aren't indexed** after ~a week. "Discovered –
+      currently not indexed" on a new domain is normal and means keep waiting;
+      "Crawled – currently not indexed" means the page needs stronger content
+      or links.
 
-## 4 · Final checks
-- [ ] Submit the contact form once — confirm it lands in your inbox and redirects to /thanks.
-- [ ] Book a test Calendly slot end-to-end.
-- [ ] Update LinkedIn headline/experience to match the site (20+ implementations, Synodica ended Jul 2026, independent 2026–).
-- [ ] Calendly URL still uses the `dhnarola12` account slug (`calendly.com/dhnarola12/30min`) — works fine; rename the Calendly account if you want it cleaner.
+## 2 · Bing — Webmaster Tools (feeds DuckDuckGo and Yahoo)
+
+`public/BingSiteAuth.xml` is already served, so verification is one click.
+DuckDuckGo and Yahoo both source results from Bing — fixing Bing fixes all
+three. Brave runs its own index but also honours IndexNow.
+
+- [ ] Verify `dhirennarola.com` at https://www.bing.com/webmasters (the
+      XML-file method — the file is already deployed).
+- [ ] Submit `https://dhirennarola.com/sitemap-index.xml`.
+- [ ] Confirm the IndexNow key is accepted (key file:
+      `/378058de20b41390bb8917d379894ee8.txt`). The deploy workflow pings
+      IndexNow automatically on every push to `main` — see
+      `.github/workflows/deploy.yml`.
+
+## 3 · Links pointing at the domain
+
+A new domain with no inbound links is slow to index no matter how clean the
+markup is. Each of these is a crawlable path to the site:
+
+- [ ] LinkedIn profile → Contact info → Website = `https://dhirennarola.com`.
+- [ ] LinkedIn headline + experience updated to match the site
+      (22 implementations, 13 countries, Synodica ended Jul 2026,
+      independent 2026–).
+- [ ] GitHub profile README + profile "Website" field.
+- [ ] Odoo App Store publisher profile.
+- [ ] Any Upwork/Toptal/community profile already in use.
+
+## 4 · Cloudflare settings to check
+
+- [ ] **Scrape Shield → Email Address Obfuscation.** Cloudflare rewrites the
+      `mailto:` on the contact page and footer into
+      `/cdn-cgi/l/email-protection`, which leaves no-JS visitors and AI
+      crawlers with a dead link. The templates now wrap those links in
+      `<!--email_off-->`, which exempts them — verify after the next deploy
+      that `hello@dhirennarola.com` appears in view-source. If it still does
+      not, turn the feature off entirely.
+- [ ] **Bot Fight Mode / AI Scrapers & Crawlers.** If either is on, verified
+      AI crawlers get challenged even though `robots.txt` welcomes them.
+      Confirm both are off if you want ChatGPT, Claude, Perplexity and Brave
+      to read the site.
+
+## 5 · Content facts still marked unconfirmed
+
+`src/content/work/*.md` carries `# TODO(Dhiren): confirm …` comments on facts
+that are published live. Resolve or remove each:
+
+- [ ] `elevator-maintenance-automation.md` — Odoo version + implementation year.
+- [ ] `it-services-billing.md` — implementation year.
+- [ ] `jewellery-sales-tags.md` — country, and whether the client may be named.
+- [ ] `ksa-automotive-erp.md` — implementation year/duration.
+
+## 6 · Nice to have
+
+- [ ] The homepage country grid hardcodes its 9 visible countries and the
+      "+ Egypt, Australia, Mexico, Laos" overflow, while `countriesServed` in
+      `src/data/facts.ts` holds the canonical 13. The continent count is now
+      derived from that list, but the grid is not — adding a country means
+      editing two places. Worth wiring the grid to the data.
+- [ ] Calendly still uses the `dhnarola12` account slug. Works fine; rename
+      only if you want the URL cleaner.

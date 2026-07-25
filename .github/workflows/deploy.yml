@@ -55,3 +55,45 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      # Tell IndexNow the site changed. One call reaches Bing, Yandex, Seznam
+      # and Naver — and DuckDuckGo and Yahoo both source their results from
+      # Bing, so this is the fastest route into all four. Google does not
+      # participate in IndexNow; it picks the sitemap up via Search Console.
+      # Never fails the deploy: indexing is best-effort, shipping is not.
+      - name: Ping IndexNow
+        continue-on-error: true
+        env:
+          KEY: 378058de20b41390bb8917d379894ee8
+          HOST: dhirennarola.com
+        run: |
+          set -o pipefail
+          # Give the CDN a moment to serve the freshly deployed sitemap.
+          sleep 20
+          urls=$(curl -sS --max-time 30 "https://$HOST/sitemap-0.xml" \
+            | grep -o '<loc>[^<]*</loc>' \
+            | sed -e 's|<loc>||' -e 's|</loc>||' \
+            | jq -R . | jq -s .)
+          count=$(echo "$urls" | jq 'length')
+          if [ "$count" = "0" ]; then
+            echo "::warning::No URLs parsed from sitemap — skipping IndexNow ping"
+            exit 0
+          fi
+          echo "Submitting $count URLs to IndexNow"
+          body=$(jq -n \
+            --arg host "$HOST" \
+            --arg key "$KEY" \
+            --arg keyLocation "https://$HOST/$KEY.txt" \
+            --argjson urlList "$urls" \
+            '{host: $host, key: $key, keyLocation: $keyLocation, urlList: $urlList}')
+          code=$(curl -sS -o /tmp/indexnow.out -w '%{http_code}' --max-time 30 \
+            -X POST 'https://api.indexnow.org/indexnow' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "$body")
+          echo "IndexNow responded $code"
+          cat /tmp/indexnow.out || true
+          # 200 = accepted, 202 = accepted, key validation pending.
+          case "$code" in
+            200|202) echo "IndexNow accepted the submission" ;;
+            *) echo "::warning::IndexNow returned $code" ;;
+          esac

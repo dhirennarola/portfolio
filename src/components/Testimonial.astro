@@ -8,9 +8,19 @@ interface Props {
   context?: string;
   featured?: boolean;
   class?: string;
+  /** False when the recommender's LinkedIn profile is deactivated — see facts.ts */
+  verifiable?: boolean;
 }
 
-const { quote, name, role, context, featured = false, class: cls } = Astro.props;
+const {
+  quote,
+  name,
+  role,
+  context,
+  featured = false,
+  class: cls,
+  verifiable = true,
+} = Astro.props;
 const initials = name
   .split(' ')
   .map((p) => p[0])
@@ -26,19 +36,21 @@ const initials = name
       <div class="quote-name">{name}</div>
       <div class="quote-role">{role}{context && ` · ${context}`}</div>
     </div>
-    <a
-      class="verified"
-      href={recommendationsUrl}
-      target="_blank"
-      rel="noopener"
-      aria-label={`View ${name}'s recommendation on LinkedIn`}
-    >
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-        <polyline points="22 4 12 14.01 9 11.01" />
-      </svg>
-      LinkedIn
-    </a>
+    {verifiable && (
+      <a
+        class="verified"
+        href={recommendationsUrl}
+        target="_blank"
+        rel="noopener"
+        aria-label={`View ${name}'s recommendation on LinkedIn`}
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+          <polyline points="22 4 12 14.01 9 11.01" />
+        </svg>
+        LinkedIn
+      </a>
+    )}
   </figcaption>
 </figure>
 

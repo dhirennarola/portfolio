@@ -1,5 +1,6 @@
 ---
 title: 'Hourly Billing on Autopilot: Subscription Platform for an IT Services Company'
+metaTitle: 'Automated Hourly Billing for IT Services — Case Study'
 clientLabel: 'IT services & cloud company'
 industry: 'IT & SaaS'
 country: 'United States'
@@ -8,6 +9,7 @@ odooVersion: 'Odoo (Odoo.sh)'
 role: 'Solution Architect & Lead Developer'
 # TODO(Dhiren): confirm implementation year
 status: 'Live in production'
+metaDescription: 'Subscription hourly-billing platform for a US IT services company: automatic project allocation and a customer portal. 100% of manual billing gone.'
 summary: 'A subscription-based hourly billing system with automatic project allocation, a full customer portal, and hardened security — eliminating 100% of manual billing and cutting client queries by 45%.'
 featured: false
 order: 4

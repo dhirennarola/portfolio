@@ -11,6 +11,8 @@ import {
   career,
   recommendations,
   contact,
+  continentCount,
+  continentWord,
 } from '../data/facts';
 import { faqSchema, professionalServiceSchema } from '../data/schema';
 import { getCollection } from 'astro:content';
@@ -53,17 +55,9 @@ const jsonLd = [professionalServiceSchema(), faqSchema(faqs)];
 ---
 
 <Base
-  title="Dhiren Narola — Odoo Architect, Developer & AI Automation Engineer"
-  description="Odoo 18 certified architect & developer with 22 ERP implementations across 13 countries. Odoo implementation, ERP rescue, ZATCA e-invoicing compliance, and AI-powered business automation — one accountable expert from architecture to go-live."
+  title="Dhiren Narola — Odoo Architect & AI Automation Engineer"
+  description="Odoo 18 certified architect with 22 ERP implementations across 13 countries. Odoo implementation, ERP rescue, ZATCA e-invoicing, and AI automation — one accountable expert."
   path="/"
-  keywords={[
-    'Odoo ERP consultant India',
-    'Odoo implementation partner',
-    'Odoo developer for hire',
-    'ERP consultant Saudi Arabia',
-    'Odoo AI integration',
-    'WhatsApp Odoo automation',
-  ]}
   jsonLd={jsonLd}
 >
   <!-- ============ HERO (100svh, dark) ============ -->
@@ -83,7 +77,7 @@ const jsonLd = [professionalServiceSchema(), faqSchema(faqs)];
               <span>Made intelligent with AI.</span>
               <span>Rescued when it fails.</span>
               <span>Integrated end-to-end.</span>
-              <span>Delivered on 4 continents.</span>
+              <span>Delivered on {continentCount} continents.</span>
             </span>
           </h1>
           <p class="hero-lede rv-h" data-h="3">
@@ -123,8 +117,8 @@ const jsonLd = [professionalServiceSchema(), faqSchema(faqs)];
       </div>
 
       <div class="proofbar rv-h" data-h="5">
-        <div><div class="stat-num" data-count="22">0</div><div class="stat-lbl">ERPs delivered &amp; live</div></div>
-        <div><div class="stat-num" data-count="13">0</div><div class="stat-lbl">Countries · 4 continents</div></div>
+        <div><div class="stat-num" data-count="22">22</div><div class="stat-lbl">ERPs delivered &amp; live</div></div>
+        <div><div class="stat-num" data-count="13">13</div><div class="stat-lbl">Countries · {continentCount} continents</div></div>
         <div><div class="stat-num" data-count="0">0</div><div class="stat-lbl">Failed go-lives</div></div>
         <div><div class="stat-num">11–19</div><div class="stat-lbl">Odoo versions mastered</div></div>
       </div>
@@ -222,19 +216,19 @@ const jsonLd = [professionalServiceSchema(), faqSchema(faqs)];
         <div>
           <SectionHeader
             eyebrow="Global delivery"
-            title="Four continents.<br />One accountable architect."
+            title={`${continentWord} continents.<br />One accountable architect.`}
             desc="Every implementation delivered remotely — with overlap hours matched to your timezone and written updates you never have to chase."
           />
           <div class="globe-stats" data-stagger>
-            <div><div class="stat-num" data-count="13">0</div><div class="stat-lbl">Countries served</div></div>
-            <div><div class="stat-num" data-count="4">0</div><div class="stat-lbl">Continents</div></div>
+            <div><div class="stat-num" data-count="13">13</div><div class="stat-lbl">Countries served</div></div>
+            <div><div class="stat-num" data-count={continentCount}>{continentCount}</div><div class="stat-lbl">Continents</div></div>
             <div><div class="stat-num">GMT±12</div><div class="stat-lbl">Timezone coverage</div></div>
           </div>
         </div>
         <div class="country-grid" data-stagger>
-          <div class="country"><b><span class="pin" style="margin-right:6px" aria-hidden="true"></span>United States</b><span>SaaS billing automation</span></div>
+          <div class="country"><b>United States</b><span>SaaS billing automation</span></div>
           <div class="country"><b>Saudi Arabia</b><span>ZATCA ERP · 300+ staff</span></div>
-          <div class="country"><b>New Zealand</b><span>Telecom ERP (current)</span></div>
+          <div class="country"><b><span class="pin" aria-hidden="true"></span>New Zealand</b><span>Telecom ERP (current)</span></div>
           <div class="country"><b>Netherlands</b><span>Finance customization</span></div>
           <div class="country"><b>Germany</b><span>EU delivery</span></div>
           <div class="country"><b>Rwanda</b><span>Africa delivery</span></div>

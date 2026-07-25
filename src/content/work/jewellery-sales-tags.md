@@ -1,5 +1,6 @@
 ---
 title: 'Product Tagging & Sales Workflow for a Jewellery Retailer on Odoo 19'
+metaTitle: 'Jewellery Retail Tagging on Odoo 19 — Case Study'
 clientLabel: 'Jewellery retail business'
 industry: 'Retail'
 country: 'India'

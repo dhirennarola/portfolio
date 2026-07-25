@@ -5,6 +5,16 @@ const work = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/work' }),
   schema: z.object({
     title: z.string(),
+    /**
+     * SERP title. The on-page `title` is written to sell the case study and
+     * runs long — appended with " — Case Study | Dhiren Narola" it reached
+     * ~105 characters, well past where Google truncates. Set this to a
+     * ~55-60 character version; it falls back to the long form if omitted.
+     */
+    metaTitle: z.string().optional(),
+    /** ~150 char SERP description; falls back to `summary`, which is written
+     *  for the page body and runs longer than Google will show. */
+    metaDescription: z.string().optional(),
     clientLabel: z.string(),
     industry: z.string(),
     country: z.string(),
@@ -41,6 +51,8 @@ const insights = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/insights' }),
   schema: z.object({
     title: z.string(),
+    /** ~55-60 char SERP title; falls back to `title | Dhiren Narola`. */
+    metaTitle: z.string().optional(),
     description: z.string(),
     publishDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),

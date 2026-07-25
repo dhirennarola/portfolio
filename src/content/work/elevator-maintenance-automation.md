@@ -1,5 +1,6 @@
 ---
 title: 'Subscription-Driven Maintenance for 4,000+ Customers — Half the Call Center Load'
+metaTitle: 'Maintenance Automation at 4,000-Customer Scale — Case Study'
 clientLabel: 'Elevator maintenance & subscription company'
 industry: 'Facility Management'
 country: 'Saudi Arabia'
@@ -8,6 +9,7 @@ odooVersion: 'Odoo'
 role: 'Solution Architect & Lead Developer'
 # TODO(Dhiren): confirm Odoo version + implementation year
 status: 'Live in production'
+metaDescription: 'Subscription-driven maintenance scheduling plus a WhatsApp self-service flow for 4,000+ customers — half the call-center load replaced.'
 summary: 'Automated maintenance scheduling tied to subscription plans, with a WhatsApp self-service flow for 4,000+ customers — cutting missed service visits by 35% and replacing half the call-center workload.'
 featured: false
 order: 3

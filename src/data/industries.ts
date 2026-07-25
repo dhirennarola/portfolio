@@ -23,7 +23,7 @@ export const industries: Industry[] = [
     name: 'Automotive & Gulf Compliance',
     headline: 'Odoo for automotive businesses in Saudi Arabia & the Gulf.',
     lede: 'Multi-branch servicing and parts retail, Saudi payroll with GOSI and end-of-service, ZATCA Phase 2 e-invoicing in production at 1,500+ invoices a month — delivered for a 300+ employee automotive group.',
-    metaTitle: 'Odoo for Automotive & ZATCA Compliance in Saudi Arabia | Dhiren Narola',
+    metaTitle: 'Odoo for Automotive & ZATCA in Saudi Arabia | Dhiren Narola',
     metaDescription:
       'Odoo ERP for automotive and multi-branch businesses in KSA: ZATCA Phase 2 e-invoicing, Saudi labor-law payroll (GOSI, EOS), WhatsApp service desks, and WooCommerce sync.',
     pains: [

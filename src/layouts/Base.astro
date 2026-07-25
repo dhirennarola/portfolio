@@ -19,8 +19,6 @@ interface Props {
   noindex?: boolean;
   /** Utility pages with light backgrounds start the header in its white-glass state */
   headerLight?: boolean;
-  /** Extra keywords appended to the site-wide set */
-  keywords?: string[];
 }
 
 const {
@@ -32,36 +30,16 @@ const {
   jsonLd = [],
   noindex = false,
   headerLight = false,
-  keywords = [],
 } = Astro.props;
 
 const canonical = new URL(path.endsWith('/') || path.includes('.') ? path : path + '/', site.url).href;
 const ogImageAbs = new URL(ogImage, site.url).href;
 
-const baseKeywords = [
-  'Dhiren Narola',
-  'Dhiren',
-  'Narola',
-  'Dhiren Narola Odoo developer',
-  'Dhiren Narola Odoo architect',
-  'Dhiren Narola AI automation',
-  'Odoo developer India',
-  'remote Odoo developer',
-  'Odoo consultant for international clients',
-  'Odoo expert USA Europe Middle East',
-  'Odoo Architect',
-  'Odoo Developer',
-  'Odoo Consultant',
-  'Odoo Expert',
-  'Odoo ERP Implementation',
-  'ERP Rescue',
-  'AI Automation Engineer',
-  'ZATCA e-invoicing Odoo',
-  'Odoo Customization',
-  'hire Odoo developer',
-  'freelance Odoo consultant',
-];
-const allKeywords = [...new Set([...baseKeywords, ...keywords])].join(', ');
+/* No <meta name="keywords">. Google announced in 2009 that it disregards the
+   tag for web ranking and has never reversed that; Bing has separately called
+   a stuffed keywords tag a spam indicator. So the tag was upside-free at best.
+   The topical signal lives in the page copy and in the Person schema's
+   knowsAbout / alternateName below, which search engines do read. */
 
 /** Person schema present on every page — the entity Google associates with "Dhiren Narola". */
 const personSchema = {
@@ -162,7 +140,6 @@ const allSchemas = [personSchema, websiteSchema, ...jsonLd];
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content={allKeywords} />
     <link rel="canonical" href={canonical} />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="author" content={site.name} />
@@ -189,10 +166,15 @@ const allSchemas = [personSchema, websiteSchema, ...jsonLd];
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbs} />
 
+    {/* Every icon below renders the same "D." mark. Google Search often prefers
+        apple-touch-icon over the declared favicons, so when that file held the
+        old "dn" wordmark the SERP icon disagreed with the browser tab. Keep
+        these in sync — regenerate with `npm run og`, never by hand. */}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
     <meta name="theme-color" content="#0a1a33" />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -297,7 +279,11 @@ const allSchemas = [personSchema, websiteSchema, ...jsonLd];
         });
       }
 
-      /* Animated counters */
+      /* Animated counters.
+         The real value is already rendered as text in the HTML, so crawlers,
+         AI fetchers, and no-JS visitors always read the true number — JS only
+         replays it as a count-up. Counters already on screen at load keep their
+         printed value untouched: re-animating them would flash 22 → 0 → 22. */
       const animateCount = (el: HTMLElement) => {
         const target = parseFloat(el.dataset.count || '0');
         const suffix = el.dataset.suffix || '';
@@ -311,13 +297,7 @@ const allSchemas = [personSchema, websiteSchema, ...jsonLd];
         };
         requestAnimationFrame(step);
       };
-      const counters = document.querySelectorAll<HTMLElement>('[data-count]');
-      if (reduced) {
-        counters.forEach((el) => {
-          el.textContent =
-            parseFloat(el.dataset.count || '0').toLocaleString('en-US') + (el.dataset.suffix || '');
-        });
-      } else {
+      if (!reduced) {
         const cio = new IntersectionObserver(
           (entries) =>
             entries.forEach((e) => {
@@ -328,7 +308,11 @@ const allSchemas = [personSchema, websiteSchema, ...jsonLd];
             }),
           { threshold: 0.6 }
         );
-        counters.forEach((el) => cio.observe(el));
+        document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) return;
+          cio.observe(el);
+        });
       }
 
       /* Rotating skill line (fixed height — zero layout shift) */

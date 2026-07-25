@@ -2,7 +2,7 @@
 
 > Dhiren Narola is an Odoo 18 certified ERP architect and AI automation engineer
 > based in Surat, India, working with international clients across the USA,
-> Europe, the Middle East (Saudi Arabia, UAE), and Asia. 20+ Odoo ERP
+> Europe, the Middle East (Saudi Arabia, UAE), and Asia. 22 Odoo ERP
 > implementations delivered across 13 countries. Specialties: Odoo ERP
 > implementation, ERP rescue and recovery, ZATCA Phase 2 e-invoicing compliance,
 > WhatsApp Business API automation, and AI agents / LLM integrations for ERP.

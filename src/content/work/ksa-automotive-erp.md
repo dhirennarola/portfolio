@@ -1,5 +1,6 @@
 ---
 title: 'One ERP for a 300-Employee Automotive Group — with ZATCA Phase 2 Compliance'
+metaTitle: 'ZATCA-Compliant Automotive ERP — Odoo Case Study'
 clientLabel: 'Premium car servicing & spare-parts retail group'
 industry: 'Automotive'
 country: 'Saudi Arabia'
@@ -8,6 +9,7 @@ odooVersion: 'Odoo 16'
 role: 'Solution Architect & Implementation Lead'
 # TODO(Dhiren): confirm implementation year/duration, e.g. "2023 · ~9 months to go-live"
 status: 'Live in production'
+metaDescription: 'One Odoo ERP for a 300-employee Saudi automotive group: ZATCA Phase 2 e-invoicing, payroll, and multi-branch ops. 60% less manual work.'
 summary: 'End-to-end HR, payroll, accounting, and sales ecosystem for a Saudi automotive group — ZATCA Phase 2 e-invoicing at 1,500+ invoices a month, WooCommerce sync at 1,000+ orders a month, and a WhatsApp helpdesk that cut ticket response times by ~40%.'
 featured: true
 order: 1
